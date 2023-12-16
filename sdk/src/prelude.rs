@@ -29,10 +29,12 @@ pub async fn request_get(
 pub async fn get_json_by_response(
     response: reqwest::Response,
 ) -> reqwest::Result<std::collections::HashMap<String, serde_json::Value>> {
-    Ok(response.json::<std::collections::HashMap<String, serde_json::Value>>().await?)
+    Ok(response
+        .json::<std::collections::HashMap<String, serde_json::Value>>()
+        .await?)
 }
 
-pub fn get_headers_by_respone(response: &reqwest::Response) -> HeaderMap {
+pub fn get_headers_by_response(response: &reqwest::Response) -> HeaderMap {
     response.headers().clone()
 }
 
@@ -42,6 +44,10 @@ pub struct Auth {
     pub session_id: String,
     pub authorization: String,
 }
+
+// Error processer
+
+pub type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
 #[derive(Debug)]
 pub struct Error {
@@ -56,9 +62,23 @@ impl std::fmt::Display for Error {
         match &self.kind as &str {
             _ => write!(
                 f,
-                "程序出错:{{错误类型: {}, 错误原因: {}}}",
+                "Program Error:{{Error kind: {}, Error message: {}}}",
                 self.kind, self.message
             ),
         }
     }
+}
+
+impl Error {
+    pub fn new(kind: String, message: String) -> Box<dyn std::error::Error> {
+        Box::new(Self { kind, message })
+    }
+}
+
+// Account
+
+#[derive(Serialize, Debug)]
+pub struct Account {
+    pub user: String,
+    pub password: String,
 }

@@ -5,8 +5,3 @@ pub mod get_user_proxies;
 pub mod login;
 pub mod prelude;
 pub mod sign;
-
-#[cfg(test)]
-mod tests {
-    
-}

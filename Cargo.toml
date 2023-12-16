@@ -1,5 +1,11 @@
 [workspace]
+resolver = "2"
+
 members = [
-	"examples",
+	"examples/*",
 	"sdk"
+]
+
+exlude = [
+	"examples/*"
 ]
