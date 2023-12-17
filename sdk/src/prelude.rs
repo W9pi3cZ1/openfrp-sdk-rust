@@ -1,7 +1,7 @@
 use reqwest::{header::HeaderMap, redirect::Policy};
 use serde::Serialize;
 
-/// Create a new Client 创建一个 Client
+/// Create a new API Client 创建一个 API Client
 pub fn new_client() -> reqwest::Result<reqwest::Client> {
     Ok(reqwest::Client::builder()
         .redirect(Policy::limited(2))
@@ -105,18 +105,45 @@ pub struct Account {
 #[allow(non_snake_case)]
 #[derive(Serialize, Debug)]
 pub struct Proxy {
+    /// Node id 节点id
     pub node_id: i32,
+
+    /// Proxy name 隧道名称
     pub name: String,
+
+    /// Proxy type 隧道类型
     pub r#type: String,
+
+    /// Local address 本地地址
     pub local_addr: String,
+    
+    /// Local port 本地端口
     pub local_port: String,
+    
+    /// Remote port 远程端口
     pub remote_port: i32,
+
+    /// Domain bind 绑定的域名
     pub domain_bind: String,
+    
+    /// Data compress 数据压缩
     pub dataGzip: bool,
+    
+    /// Data encrypt 数据加密
     pub dataEncrypt: bool,
+    
+    /// URL route URL路由
     pub url_route: String,
+    
+    /// Host rewrite HOST重写
     pub host_rewrite: String,
+    
+    /// Request from 请求来源
     pub request_from: String,
+    
+    /// Request password 请求密码
     pub request_pass: String,
+
+    /// Proxy custom profile 隧道的自定义配置文件
     pub custom: String,
 }
