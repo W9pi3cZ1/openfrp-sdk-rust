@@ -43,12 +43,11 @@ pub fn get_headers_by_response(response: &reqwest::Response) -> HeaderMap {
     response.headers().clone()
 }
 
-
 /// Storage auth info 存储验证信息
-/// 
+///
 /// *If you wanna to get it, You need Login to OpenFrp.*
 /// *如果你想要得到它，你需要登录到OpenFrp*
-/// 
+///
 /// **The login module is `openfrp-sdk::login`*
 /// *登录模块是`openfrp-sdk::login`**
 #[allow(dead_code)]
@@ -71,7 +70,7 @@ pub struct Error {
     pub message: String,
 }
 
-/// let Error impl trait StdError 让Error实现trait StdError 
+/// let Error impl trait StdError 让Error实现trait StdError
 impl std::error::Error for Error {}
 
 /// let Error impl trait Display 让Error实现trait Display
@@ -87,9 +86,8 @@ impl std::fmt::Display for Error {
     }
 }
 
-/// Error impls 
+/// Error impls
 impl Error {
-
     /// New an Error 新建一个Error
     pub fn new(kind: String, message: String) -> Box<dyn std::error::Error> {
         Box::new(Self { kind, message })
@@ -101,4 +99,24 @@ impl Error {
 pub struct Account {
     pub user: String,
     pub password: String,
+}
+
+/// Proxy struct 隧道结构体
+#[allow(non_snake_case)]
+#[derive(Serialize, Debug)]
+pub struct Proxy {
+    pub node_id: i32,
+    pub name: String,
+    pub r#type: String,
+    pub local_addr: String,
+    pub local_port: String,
+    pub remote_port: i32,
+    pub domain_bind: String,
+    pub dataGzip: bool,
+    pub dataEncrypt: bool,
+    pub url_route: String,
+    pub host_rewrite: String,
+    pub request_from: String,
+    pub request_pass: String,
+    pub custom: String,
 }

@@ -18,5 +18,15 @@ pub mod login;
 /// Sign 签到
 pub mod sign;
 
+/// New proxy 新建隧道
+pub mod new_proxy;
+
+/// Edit proxy 编辑隧道
+pub mod edit_proxy;
+
+/// Remove proxy 删除隧道
+pub mod remove_proxy;
+
+
 /// Prelude modules 预导入模块
 pub mod prelude;
