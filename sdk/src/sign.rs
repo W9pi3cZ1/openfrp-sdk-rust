@@ -5,6 +5,7 @@ use serde_json::Value;
 use super::api_url;
 use super::prelude::*;
 
+/// Sign api impl 登录API实现
 pub async fn sign(auth: &Auth, client: reqwest::Client) -> reqwest::Result<HashMap<String,Value>>{
     let mut headers = reqwest::header::HeaderMap::new();
     headers.insert("content-type", "application/json".parse().unwrap());

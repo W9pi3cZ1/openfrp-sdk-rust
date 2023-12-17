@@ -5,6 +5,7 @@ use reqwest::header::HeaderMap;
 use serde_json::{self, Value};
 use std::collections::HashMap;
 
+/// Login to OpenFrp by account 用Account登录到OpenFrp
 pub async fn login(account: &Account, client: reqwest::Client) -> Result<Auth> {
     login_oauth2(client.clone(), account).await?;
 
@@ -26,6 +27,7 @@ pub async fn login(account: &Account, client: reqwest::Client) -> Result<Auth> {
         .unwrap()
         .to_str()?
         .to_string();
+    
     let auth = Auth {
         session_id: session_id,
         authorization: authorization,
@@ -33,6 +35,7 @@ pub async fn login(account: &Account, client: reqwest::Client) -> Result<Auth> {
     return Ok(auth);
 }
 
+/// Login to OAuth2 登录到OAuth2
 pub async fn login_oauth2(
     client: reqwest::Client,
     account: &Account,
@@ -50,6 +53,7 @@ pub async fn login_oauth2(
     Ok(json)
 }
 
+/// Get OAuth2 login callback 获取OAuth2登录回调
 pub async fn oauth2_callback(client: reqwest::Client) -> Result<HashMap<String, Value>> {
     let mut headers = HeaderMap::new();
     headers.insert("content-type", "application/json".parse().unwrap());
@@ -65,6 +69,8 @@ pub async fn oauth2_callback(client: reqwest::Client) -> Result<HashMap<String, 
     Ok(json)
 }
 
+
+/// Login to OpenFrp by OAuth2 login callback 用OAuth2登录回调登录到OpenFrp
 pub async fn login_by_callback(
     client: reqwest::Client,
     oauth2_callback: HashMap<String, Value>,

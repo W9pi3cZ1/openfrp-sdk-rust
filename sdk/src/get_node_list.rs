@@ -5,7 +5,7 @@ use serde_json::Value;
 use super::api_url;
 use super::prelude::*;
 
-#[tokio::main]
+/// Get node list API impl 获取节点列表的API实现
 pub async fn get_node_list(auth: &Auth, client: reqwest::Client) -> reqwest::Result<HashMap<String,Value>>{
     let mut headers = reqwest::header::HeaderMap::new();
     headers.insert("content-type", "application/json".parse().unwrap());

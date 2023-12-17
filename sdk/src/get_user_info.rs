@@ -5,6 +5,7 @@ use serde_json::Value;
 use super::api_url;
 use super::prelude::*;
 
+/// Get user info API impl 获取用户API的实现
 pub async fn get_user_info(auth: &Auth, client: reqwest::Client) -> reqwest::Result<HashMap<String,Value>>{
     let mut headers = reqwest::header::HeaderMap::new();
     headers.insert("content-type", "application/json".parse().unwrap());

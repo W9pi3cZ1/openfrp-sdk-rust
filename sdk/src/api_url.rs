@@ -1,6 +1,11 @@
-/// Login APIs 登录类API
+/// OAuth2 Login API OAuth2登录API
+
 pub const OAUTH2_URL: &str = "https://openid.17a.ink/api/public/login";
+/// OAuth2 Callback API OAuth2回调API
+
 pub const OAUTH2_CALLBACK: &str = "https://openid.17a.ink/api/oauth2/authorize?response_type=code&redirect_uri=https://of-dev-api.bfsea.xyz/oauth_callback&client_id=openfrp";
+/// Login API 登录API
+
 pub const LOGIN_CALLBACK: &str = "https://of-dev-api.bfsea.xyz/oauth2/callback?code=";
 
 /// Get user info API 获取用户信息API
