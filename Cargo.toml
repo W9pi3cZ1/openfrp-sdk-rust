@@ -3,9 +3,11 @@ resolver = "2"
 
 members = [
 	"examples/*",
+	"examples-blocking/*",
 	"sdk"
 ]
 
 exlude = [
-	"examples/*"
+	"examples/*",
+	"examples-blocking/*"
 ]

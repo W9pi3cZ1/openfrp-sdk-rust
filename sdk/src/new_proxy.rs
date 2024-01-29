@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use serde_json::Value;
 
-use super::api_url;
+use crate::api_url;
 use super::prelude::*;
 
 /// New proxy API impl 新建隧道的API实现

@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use serde_json::Value;
 
-use super::api_url;
+use crate::api_url;
 use super::prelude::*;
 
 /// Get node list API impl 获取节点列表的API实现

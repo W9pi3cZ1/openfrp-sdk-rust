@@ -6,10 +6,10 @@ use crate::api_url;
 use super::prelude::*;
 
 /// Remove proxy API impl 删除隧道的API实现
-pub async fn remove_proxy(
+pub fn remove_proxy(
     auth: &Auth,
     proxy_id: i32,
-    client: reqwest::Client,
+    client: reqwest::blocking::Client,
 ) -> reqwest::Result<HashMap<String,Value>> {
     let mut headers = reqwest::header::HeaderMap::new();
     headers.insert("content-type", "application/json".parse().unwrap());
@@ -20,7 +20,7 @@ pub async fn remove_proxy(
             "session": auth.session_id,
         }
     );
-    let response = request_post(client, api_url::REMOVE_PROXY, headers, &json).await?;
-    let json = get_json_by_response(response).await?;
+    let response = request_post(client, api_url::REMOVE_PROXY, headers, &json)?;
+    let json = get_json_by_response(response)?;
     Ok(json)
 }

@@ -5,11 +5,11 @@ use serde_json::Value;
 use crate::api_url;
 use super::prelude::*;
 
-/// Edit proxy API impl 编辑隧道的API实现
-pub async fn edit_proxy(
+/// New proxy API impl 新建隧道的API实现
+pub fn new_proxy(
     auth: &Auth,
     proxy: &Proxy,
-    client: reqwest::Client,
+    client: reqwest::blocking::Client,
 ) -> reqwest::Result<HashMap<String,Value>> {
     let mut headers = reqwest::header::HeaderMap::new();
     headers.insert("content-type", "application/json".parse().unwrap());
@@ -19,7 +19,7 @@ pub async fn edit_proxy(
         "session".to_string(),
         serde_json::to_value(auth.session_id.clone()).unwrap(),
     );
-    let response = request_post(client, api_url::EDIT_PROXY, headers, &json).await?;
-    let json = get_json_by_response(response).await?;
+    let response = request_post(client, api_url::NEW_PROXY, headers, &json)?;
+    let json = get_json_by_response(response)?;
     Ok(json)
 }

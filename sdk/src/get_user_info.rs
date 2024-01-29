@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use serde_json::Value;
 
-use super::api_url;
+use crate::api_url;
 use super::prelude::*;
 
 /// Get user info API impl 获取用户API的实现
