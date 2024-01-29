@@ -11,7 +11,6 @@ pub fn get_user_info(auth: &Auth, client: reqwest::blocking::Client) -> reqwest:
     headers.insert("content-type", "application/json".parse().unwrap());
     headers.insert("authorization", auth.authorization.parse().unwrap());
     let json = serde_json::json!({
-        "session": auth.session_id,
     });
     let response = request_post(client, api_url::GET_USER_INFO, headers, &json)?;
     let json = get_json_by_response(response)?;

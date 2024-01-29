@@ -17,7 +17,6 @@ pub async fn remove_proxy(
     let json = serde_json::json!(
         {
             "proxy_id": proxy_id,
-            "session": auth.session_id,
         }
     );
     let response = request_post(client, api_url::REMOVE_PROXY, headers, &json).await?;

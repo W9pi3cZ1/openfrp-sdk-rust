@@ -15,10 +15,7 @@ pub fn edit_proxy(
     headers.insert("content-type", "application/json".parse().unwrap());
     headers.insert("authorization", auth.authorization.parse().unwrap());
     let mut json = serde_json::to_value(proxy).unwrap();
-    json.as_object_mut().unwrap().insert(
-        "session".to_string(),
-        serde_json::to_value(auth.session_id.clone()).unwrap(),
-    );
+    json.as_object_mut().unwrap().remove("remote_port");
     let response = request_post(client, api_url::EDIT_PROXY, headers, &json)?;
     let json = get_json_by_response(response)?;
     Ok(json)

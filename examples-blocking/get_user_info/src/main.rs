@@ -7,8 +7,8 @@ use openfrp_sdk::blocking::{
 fn main() -> Result<()> {
     let account = Account {
         // Storage account 存储账户
-        user: "SDFGHJK86@outlook.com".to_string(),
-        password: "OpenFrp@138".to_string(),
+        user: "your_email@example.com".to_string(),
+        password: "your_password".to_string(),
     };
     let client = new_client()?; // New api client 创建API客户端
     let auth = login::login(&account, client.clone())?; // Verify account 验证账户

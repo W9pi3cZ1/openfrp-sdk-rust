@@ -105,6 +105,9 @@ pub struct Account {
 #[allow(non_snake_case)]
 #[derive(Serialize, Debug)]
 pub struct Proxy {
+    /// Proxy id 隧道ID
+    pub proxy_id: i32,
+    
     /// Node id 节点id
     pub node_id: i32,
 

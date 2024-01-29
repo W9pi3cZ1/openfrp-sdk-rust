@@ -17,6 +17,7 @@ fn main() -> Result<()> {
             let client = new_client()?; // New api client 创建API客户端
             let auth = login::login(&account, client.clone()).await?; // Verify account 验证账户
             let proxy = Proxy { // Proxy info 隧道信息
+                proxy_id: 0,
                 node_id: 44,
                 name: "test".to_string(),
                 r#type: "tcp".to_string(),
